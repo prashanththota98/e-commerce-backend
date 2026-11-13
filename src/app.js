@@ -19,12 +19,8 @@ import paymentRoutes from "./routes/payment.js";
 const app = express();
 const isProd = process.env.NODE_ENV === "production";
 
-// Only keep this if you're behind exactly ONE proxy (Render, Nginx, etc.).
-// If you run with no proxy, remove it, or clients can spoof their IP
-// via X-Forwarded-For and bypass the rate limiter.
 app.set("trust proxy", 1);
 
-// 1. Health check first, so it never gets rate limited or blocked by CORS
 app.get("/health", async (req, res) => {
   try {
     await pool.query("SELECT 1");

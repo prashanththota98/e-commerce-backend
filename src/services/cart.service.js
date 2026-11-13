@@ -34,7 +34,6 @@ export const addToCart = async (userId, productId, quantity) => {
   return rows[0];
 };
 
-// Sets the quantity to an exact value
 export const setCartQuantity = async (userId, productId, quantity) => {
   const {
     rows: [p],

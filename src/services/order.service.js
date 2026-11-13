@@ -47,7 +47,6 @@ const placeOrder = async (client, userId, addressId, lines) => {
     priced.push({ productId, quantity, price: product.price });
   }
 
-  // Total in cents to avoid floating point drift
   const totalCents = priced.reduce(
     (sum, i) => sum + Math.round(Number(i.price) * 100) * i.quantity,
     0,
